@@ -1,15 +1,18 @@
 import {defineField, defineType} from 'sanity'
+import {DashboardIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'page',
-  title: 'Page',
+  title: 'Seite',
   type: 'document',
+  icon: DashboardIcon,
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Titel',
       type: 'string',
     }),
+
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -19,47 +22,20 @@ export default defineType({
         maxLength: 96,
       },
     }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
-    }),
+
     defineField({
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Hauptbild',
       type: 'image',
       options: {
         hotspot: true,
       },
     }),
-    defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-    }),
+
     defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
     }),
   ],
-
-  preview: {
-    select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
-  },
 })
