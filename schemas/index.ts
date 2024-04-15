@@ -1,4 +1,5 @@
 import blockContent from './blockContent'
+import blockContentSimple from './blockContentSimple'
 import tag from './tag'
 import post from './post'
 import review from './review'
@@ -10,4 +11,14 @@ import reviewResource from './reviewResource'
 
 const objects = [reviewResource]
 
-export const schemaTypes = [post, review, page, author, tag, blockContent, siteSettings, ...objects]
+export const schemaTypes = [
+  post,
+  review,
+  page,
+  author,
+  tag,
+  blockContent,
+  blockContentSimple,
+  siteSettings,
+  ...objects,
+]

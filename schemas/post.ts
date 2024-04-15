@@ -1,6 +1,5 @@
 import {defineField, defineType} from 'sanity'
 import {DocumentTextIcon} from '@sanity/icons'
-import author from './author'
 
 export default defineType({
   name: 'post',
@@ -17,6 +16,13 @@ export default defineType({
       name: 'subtitle',
       title: 'Untertitel',
       type: 'string',
+    }),
+    defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      description: 'Anwählen, wenn dieser Beitrag prominenter auf der Seite erscheinen soll.',
+      initialValue: false,
     }),
     defineField({
       name: 'slug',
@@ -58,11 +64,18 @@ export default defineType({
       title: 'Veröffentlichung',
       type: 'date',
       description: 'Datum der Veröffentlichung dieses Beitrags',
+      initialValue: () => {
+        const date = new Date()
+        return `${date.getFullYear().toString().padStart(4, '0')}-${(date.getMonth() + 1)
+          .toString()
+          .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
+      },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'excerpt',
       title: 'Auszug',
-      type: 'blockContent',
+      type: 'blockContentSimple',
       description:
         'Soll Lust darauf machen, den Artikel zu lesen. Wenn es den Anfang des Artikels darstellt, trotzdem unten nochmal mit aufnehmen.',
       validation: (Rule) => Rule.max(500),

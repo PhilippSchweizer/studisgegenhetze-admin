@@ -12,8 +12,8 @@ import {CgInternal} from 'react-icons/cg'
  *  }
  */
 export default defineType({
-  title: 'Block Content',
-  name: 'blockContent',
+  title: 'Block Content Simple',
+  name: 'blockContentSimple',
   type: 'array',
   of: [
     defineArrayMember({
@@ -23,17 +23,8 @@ export default defineType({
       // correspond with HTML tags, but you can set any title or value
       // you want and decide how you want to deal with it where you want to
       // use your content.
-      styles: [
-        {title: 'Absatz', value: 'normal'},
-        {title: 'Überschrift (Ebene 1)', value: 'h2'},
-        {title: 'Überschrift (Ebene 2)', value: 'h3'},
-        {title: 'Überschrift (Ebene 3)', value: 'h4'},
-        {title: 'Blockzitat', value: 'blockquote'},
-      ],
-      lists: [
-        {title: 'Aufzählung', value: 'bullet'},
-        {title: 'Nummerierung', value: 'number'},
-      ],
+      styles: [{title: 'Absatz', value: 'normal'}],
+      lists: [],
       // Marks let you mark up inline text in the block editor.
       marks: {
         decorators: [
@@ -69,13 +60,6 @@ export default defineType({
           },
         ],
       },
-    }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
-    defineArrayMember({
-      type: 'image',
-      options: {hotspot: true},
     }),
   ],
 })

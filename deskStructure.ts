@@ -1,5 +1,4 @@
 import {StructureBuilder} from 'sanity/structure'
-import {CogIcon} from '@sanity/icons'
 
 export const myStructure = (S: StructureBuilder) =>
   S.list()
