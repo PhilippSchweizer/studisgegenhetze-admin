@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {myStructure} from './deskStructure'
+import {vercelDeployTool} from 'sanity-plugin-vercel-deploy'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
@@ -12,7 +13,7 @@ const singletonTypes = new Set(['siteSettings'])
 
 export default defineConfig({
   name: 'default',
-  title: 'stoersaal',
+  title: 'studisgegenhetze',
   projectId: 'izcphuxp',
   dataset: 'production',
 
@@ -21,6 +22,7 @@ export default defineConfig({
       structure: myStructure,
     }),
     visionTool(),
+    vercelDeployTool(),
   ],
 
   schema: {
