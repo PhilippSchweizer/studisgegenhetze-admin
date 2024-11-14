@@ -1,16 +1,6 @@
 import {defineType, defineArrayMember} from 'sanity'
 import {CgInternal} from 'react-icons/cg'
 
-/**
- * This is the schema definition for the rich text fields used for
- * for this blog studio. When you import it in schemas.js it can be
- * reused in other parts of the studio with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'blockContent'
- *  }
- */
 export default defineType({
   title: 'Block Content',
   name: 'blockContent',
@@ -44,16 +34,9 @@ export default defineType({
           {
             title: 'Interner Link',
             name: 'internalLink',
-            type: 'object',
+            type: 'reference',
+            to: [{type: 'post'}, {type: 'page'}],
             icon: CgInternal,
-            fields: [
-              {
-                title: 'Referenz',
-                name: 'reference',
-                type: 'reference',
-                to: [{type: 'post'}, {type: 'page'}],
-              },
-            ],
           },
           {
             title: 'URL',
@@ -79,3 +62,5 @@ export default defineType({
     }),
   ],
 })
+
+// Internal link implementation here and in the frontend gleaned from this repo: https://github.com/Fruup/spanischer-verein/blob/main/packages/sanity/schemas/blockContent.ts
