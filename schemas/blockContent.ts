@@ -34,9 +34,16 @@ export default defineType({
           {
             title: 'Interner Link',
             name: 'internalLink',
-            type: 'reference',
-            to: [{type: 'post'}, {type: 'page'}],
+            type: 'object',
             icon: CgInternal,
+            fields: [
+              {
+                title: 'Referenz',
+                name: 'reference',
+                type: 'reference',
+                to: [{type: 'post'}, {type: 'page'}],
+              },
+            ],
           },
           {
             title: 'URL',
