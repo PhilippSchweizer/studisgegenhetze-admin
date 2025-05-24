@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {myStructure} from './deskStructure'
+import {StudisLogo} from './components/StudisLogo'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
@@ -15,6 +16,7 @@ export default defineConfig({
   title: 'studisgegenhetze',
   projectId: 'izcphuxp',
   dataset: 'production',
+  icon: StudisLogo,
 
   plugins: [structureTool({structure: myStructure}), visionTool()],
 
