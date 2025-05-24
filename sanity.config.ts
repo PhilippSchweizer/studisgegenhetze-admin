@@ -1,9 +1,8 @@
-import {defineConfig, definePlugin} from 'sanity'
+import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {myStructure} from './deskStructure'
-import {vercelDeployTool} from 'sanity-plugin-vercel-deploy'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
@@ -17,13 +16,7 @@ export default defineConfig({
   projectId: 'izcphuxp',
   dataset: 'production',
 
-  plugins: [
-    structureTool({
-      structure: myStructure,
-    }),
-    visionTool(),
-    vercelDeployTool(),
-  ],
+  plugins: [structureTool({structure: myStructure}), visionTool()],
 
   schema: {
     types: schemaTypes,
